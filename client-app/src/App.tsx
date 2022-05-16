@@ -4,7 +4,7 @@ import './App.css';
 import { ducks } from './demo';
 // import Duckitem from './Duckitem';
 import axios from 'axios';
-import { debug } from 'console';
+import {Header, List} from 'semantic-ui-react';
 
 function App() {
   const [activities, setActivities] = useState([]);
@@ -16,14 +16,16 @@ function App() {
   },[])
 
   return (
-    <div className="App">
+    <div>
+      <Header as= 'h2' icon='users' content='Reactivities'/>
+        <List>
+          <List.Item>
+            {activities.map((activity: any) =>(
+              <li key={activity.id}>{activity.title}</li>
+            ))}
+          </List.Item>
+        </List>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <ul>
-          {activities.map((activity: any) =>(
-            <li key={activity.id}>{activity.title}</li>
-          ))}
-        </ul>
         {/* {ducks.map(duck => (
           // when looping an array, make sure give each on e a key
           <Duckitem duck={duck} key={duck.name}/>
